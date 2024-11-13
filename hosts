@@ -1,0 +1,4 @@
+[docker_servers]
+172.22.87.222 ansible_user=patric_cali
+
+
