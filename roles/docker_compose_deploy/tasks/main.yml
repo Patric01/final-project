@@ -1,0 +1,17 @@
+- name: Deploy Docker Compose Services
+  hosts: localhost
+  tasks:
+    - name: Change to directory with docker-compose.yml
+      ansible.builtin.command:
+        cmd: "cd /cale/catre/directorul/docker-compose"
+      args:
+        chdir: /cale/catre/directorul/docker-compose
+    
+    - name: Run Docker Compose Up
+      ansible.builtin.command:
+        cmd: "docker-compose up -d"
+      args:
+        chdir: /cale/catre/directorul/docker-compose
+
+
+

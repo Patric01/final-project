@@ -1,0 +1,46 @@
+---
+- name: Deploy Docker Compose Services
+  hosts: localhost
+  become: true
+
+  vars:
+    deploy_dir: /opt/docker_services
+
+  tasks:
+    - name: Creează directorul de deploy
+      file:
+        path: "{{ deploy_dir }}"
+        state: directory
+        mode: '0755'
+
+    - name: Copiază fișierul docker-compose.yml
+      copy:
+        src: ./docker-compose.yml
+        dest: "{{ deploy_dir }}/docker-compose.yml"
+
+    - name: Copiază Dockerfile_bash
+      copy:
+        src: ./Dockerfile_bash
+        dest: "{{ deploy_dir }}/Dockerfile_bash"
+
+    - name: Copiază Dockerfile_python
+      copy:
+        src: ./Dockerfile_python
+        dest: "{{ deploy_dir }}/Dockerfile_python"
+
+    - name: Copiază scriptul Bash
+      copy:
+        src: ./script_bash.sh
+        dest: "{{ deploy_dir }}/script_bash.sh"
+
+    - name: Copiază scriptul Python
+      copy:
+        src: ./script_python.py
+        dest: "{{ deploy_dir }}/script_python.py"
+
+    - name: Rulează serviciile Docker Compose
+      command: docker-compose up -d
+      args:
+        chdir: "{{ deploy_dir }}"
+
+

@@ -1,0 +1,8 @@
+---
+- name: Deploy Docker Compose Services
+  hosts: localhost
+  become: true
+  roles:
+    - docker_compose_deploy
+
+

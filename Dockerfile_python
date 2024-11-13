@@ -1,0 +1,11 @@
+
+FROM python:3
+
+COPY script_python.py /script_python.py
+
+
+RUN pip install psutil
+
+
+CMD ["python", "/script_python.py"]
+

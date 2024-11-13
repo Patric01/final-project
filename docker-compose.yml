@@ -1,0 +1,19 @@
+version: '2.2'
+
+services:
+  bash_service:
+    build:
+      context: .
+      dockerfile: Dockerfile_bash
+    container_name: container_bash
+    restart: always
+
+  python_service:
+    build:
+      context: .
+      dockerfile: Dockerfile_python
+    container_name: container_python
+    restart: always
+
+
+
